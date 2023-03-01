@@ -5,13 +5,14 @@
     height: 70px;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
-    background: #00000080;
+    background: #292929;
+    opacity: 0.9;
     display: flex;
 }
 
 .player-head {
     margin: auto 30px;
-    background-image: url("../../images/default/setve.png");
+    background-image: url("../../images/default/steve.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -64,11 +65,18 @@
     height: 37px;
     border-radius: 20px;
     border: none;
-    background: #00bd7a;
+    background: #9bb2d3;
     font: normal normal bold 20px/25px Poppins;
     color: #121212;
     margin: 15px 0;
-    box-shadow: 0 0 5px #00bd7a;
+    box-shadow: 0 0 5px #9bb2d3;
+    transition: 0.2s;
+}
+
+.play-btn:hover {
+    background: #4477a0;
+    box-shadow: 0 0 5px #4477a0;
+    transition: 0.2s;
 }
 
 .download-content {
@@ -98,7 +106,7 @@
 }
 
 .progress-bar::-webkit-progress-value {
-    background-color: #00bd7a;
+    background-color: #9bb2d3;
     border-radius: 10px;
 }
 
@@ -120,12 +128,12 @@
 
 .news-block {
     margin-bottom: 1rem;
-    transition: opacity 1s;
-    opacity: .4;
+    transition: opacity 0.3s;
+    opacity: 0.85;
 }
 
 .news-block:hover {
-    transition: opacity 1s;
+    transition: opacity 0.3s;
     opacity: 1;
 }
 
@@ -225,21 +233,21 @@
 .server {
     position: relative;
     width: 100%;
-    height: 75px;
+    height: 80px;
     background-color: #292929;
     border-radius: 10px;
-    transition: opacity 1s;
-    opacity: .4;
+    transition: opacity 0.3s;
+    opacity: 0.85;
 }
 
 .server:hover {
-    transition: opacity 1s;
+    transition: opacity 0.3s;
     opacity: 1;
 }
 
 .server-img {
     position: absolute;
-    width: 42px;
+    width: 45px;
     height: 45px;
     top: 15px;
     left: 15px;
@@ -265,7 +273,7 @@
 }
 
 .green {
-    color: #1AC707;
+    color: #9bb2d3;
 }
 
 .red {
@@ -276,8 +284,8 @@
     position: absolute;
     top: 20px;
     right: 14px;
-    width: 49px;
-    height: 33px;
+    width: 50px;
+    height: 40px;
     background-color: #262626;
     border-radius: 4px;
     transition: background-color .2s;
@@ -288,7 +296,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font: normal normal bold 13px/15px Poppins;
+    font: normal normal bold 18px/20px Poppins;
     letter-spacing: 0px;
     color: #E1E1E1;
     transition: color .2s;
@@ -308,4 +316,44 @@
 
 .online.off {
     background-color: #FF0409;
+}
+
+.RS {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background-color: #292929;
+    border-radius: 10px;
+    transition: opacity 0.3s;
+    opacity: 0.85;
+    margin-top: 15px;
+}
+
+.RS:hover {
+    transition: opacity 0.3s;
+    opacity: 1;
+}
+
+.RS-discord {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 15px;
+    left: 26px;
+}
+
+.RS-shop {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 12px;
+    left: 102px;
+}
+
+.RS-website {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 14px;
+    left: 176px;
 }

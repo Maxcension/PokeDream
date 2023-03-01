@@ -35,12 +35,12 @@ class Home {
                 blockNews.innerHTML = `
                     <div class="news-header">
                         <div class="header-text">
-                            <div class="title">Aucun news n'ai actuellement disponible.</div>
+                            <div class="title">Aucune news n'est actuellement disponible.</div>
                         </div>
                     </div>
                     <div class="news-content">
                         <div class="bbWrapper">
-                            <p>Vous pourrez suivre ici toutes les news relative au serveur.</p>
+                            <p>Vous pourrez suivre ici toutes les news relatives au serveur.</p>
                         </div>
                     </div>`
                 news.appendChild(blockNews);
@@ -74,12 +74,12 @@ class Home {
             blockNews.innerHTML = `
                 <div class="news-header">
                     <div class="header-text">
-                        <div class="title">Error.</div>
+                        <div class="title">Erreur</div>
                     </div>
                 </div>
                 <div class="news-content">
                     <div class="bbWrapper">
-                        <p>Impossible de contacter le serveur des news.</br>Merci de vérifier votre configuration.</p>
+                        <p>Impossible de contacter le serveur de news.</br>Merci de vérifier votre configuration.</p>
                     </div>
                 </div>`
             // news.appendChild(blockNews);
@@ -92,8 +92,11 @@ class Home {
             let uuid = (await this.database.get('1234', 'accounts-selected')).value;
             let account = (await this.database.get(uuid.selected, 'accounts')).value;
             let ram = (await this.database.get('1234', 'ram')).value;
+            let javaPath = (await this.database.get('1234', 'java-path')).value;
+            let javaArgs = (await this.database.get('1234', 'java-args')).value;
             let Resolution = (await this.database.get('1234', 'screen')).value;
             let launcherSettings = (await this.database.get('1234', 'launcher')).value;
+            let screen;
 
             let playBtn = document.querySelector('.play-btn');
             let info = document.querySelector(".text-download")
@@ -111,12 +114,10 @@ class Home {
             let opts = {
                 url: this.config.game_url === "" || this.config.game_url === undefined ? `${urlpkg}/files` : this.config.game_url,
                 authenticator: account,
-                timeout: 10000,
                 path: `${dataDirectory}/${process.platform == 'darwin' ? this.config.dataDirectory : `.${this.config.dataDirectory}`}`,
                 version: this.config.game_version,
                 detached: launcherSettings.launcher.close === 'close-all' ? false : true,
-                downloadFileMultiple: 30,
-
+                downloadFileMultiple: 30,       
                 loader: {
                     type: this.config.loader.type,
                     build: this.config.loader.build,
@@ -126,8 +127,9 @@ class Home {
                 verify: this.config.verify,
                 ignored: ['loader', ...this.config.ignored],
 
-                java: true,
-
+                java: this.config.java, 
+                args: [...javaArgs.args, ...this.config.game_args],
+                screen,
                 memory: {
                     min: `${ram.ramMin * 1024}M`,
                     max: `${ram.ramMax * 1024}M`
